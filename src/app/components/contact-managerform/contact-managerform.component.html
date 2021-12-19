@@ -1,0 +1,233 @@
+
+<div class="panel panel-primary">
+    <div class="panel-heading"><b>Contact Manager</b></div>
+   
+  </div>
+  <h1>Contact Manager Form</h1>
+
+  <div class="container">  
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">  
+        <form [formGroup]="ContactDetailsform"  >
+  <div class="row">
+   
+    <div class="col-lg-4">
+        <label for="ContactName">ContactName:</label>
+      <div class="input-group">
+        <span class="input-group-addon  glyphicon glyphicon-user">
+           </span>
+        <input formControlName="contact_name" type="text" maxlength="200"  class="form-control">
+      </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+    <div class="col-lg-4">
+        <label for="ContactName">CompanyName:</label>
+      <div class="input-group">
+           <span class="input-group-addon  glyphicon glyphicon-folder-close"></span>
+        <input formControlName="company_name" type="text" maxlength="200" class="form-control">
+      </div>
+    </div>
+    <div class="col-lg-4">
+        <label for="Paymentterms">Payment Terms:</label>
+        <div class="input-group">
+           
+        <input formControlName="payment_terms" type="text" maxlength="200" class="form-control">
+        </div>
+      </div>
+  </div>
+  <br>
+  <div class="row">
+  
+    <div class="col-lg-3">
+        <label for="CurrenyID">Curreny ID:</label>
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <input  formControlName="currency_id" type="text" maxlength="200"   class="form-control">
+      </div>
+    </div>
+    
+    <div class="col-lg-3">
+        <label for="website">Website:</label>
+      <div class="input-group">
+ <span class="input-group-addon">@</span>
+  <input formControlName="website" type="text" maxlength="200"  class="form-control">
+      </div>
+    </div>
+    <div class="col-lg-5">
+        <label for="website">Add Additional Info:</label>
+      <div class="input-group">
+        <table class="table" formArrayName="quantities">  
+          
+          <th scope="col" width="5px"><button type="button" (click)="addQuantity()" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus"></span>Add fields</button></th>  
+           
+            <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i"  scope="row">  
+              <td>  
+                Value:  
+                <input type="text" formControlName="value" class="form-control">  
+              </td>  
+              <td> 
+                Index :  
+                <input type="text" formControlName="value" class="form-control" pattern="^[0-9]*$">   
+                 
+              </td>  
+              <td>  
+             <span class="glyphicon glyphicon-remove" (click)="removeQuantity(i)"></span>
+              </td>  
+            </tr>  
+          </table>  
+      </div>
+    </div>
+  </div>
+<br>
+<div class="row">
+   
+    <div class="col-lg-4">
+        <div class="panel-group">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#collapse1">Billing Details</a>
+                </h4>
+              </div>
+              <div id="collapse1" class="panel-collapse collapse">
+                <label for="Address">Address:</label>
+                <div class="input-group">
+              <input formControlName="address" type="text" maxlength="200" class="form-control">
+                </div>
+                <label for="Sreet">Street:</label>
+                <div class="input-group">
+              <input formControlName="street2" type="text" maxlength="200" class="form-control">
+                </div>
+                <label for="city">City:</label>
+                <div class="input-group">
+              <input formControlName="city" type="text" maxlength="200" class="form-control">
+                </div>
+                <label for="Sreet">State:</label>
+                <div class="input-group">
+              <input formControlName="state" type="text" maxlength="200" class="form-control">
+                </div>
+                <label for="Phone">Phone Number:</label>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-phone-alt" aria-hidden="true">
+                    </span>
+                    </span>	
+                    <input type="tel" formControlName="phone"class="form-control" >
+                    </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="col-lg-4">
+        <label for="ContactName">CompanyName:</label>
+      <div class="input-group">
+           <span class="input-group-addon  glyphicon glyphicon-folder-close"></span>
+        <input formControlName="company_name" type="text" maxlength="200" class="form-control">
+      </div>
+    </div>
+    <div class="col-lg-4">
+        <label for="Paymentterms">Payment Terms:</label>
+        <div class="input-group">
+           
+        <input formControlName="payment_terms" type="text" maxlength="200" class="form-control">
+        </div>
+      </div>
+  </div>
+
+  </form>
+  </form>
+</div>
+<div class="container" >  
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">  
+     <form [formGroup]="ContactDetailsform" class="form-inline" >
+       <div class="form-group">
+       <label for="ContactName">ContactName:</label>
+     <input formControlName="contact_name" type="text" maxlength="200">
+     <div class="input-group">
+        <span class="input-group-addon">
+        <span class="glyphicon glyphicon-phone-alt" aria-hidden="true">
+        </span>
+        </span>	
+        <input type="tel" class="form-control" aria-label="Phone Number" placeholder="Phone number">
+        </div>
+     </div>
+     <div class="form-group">
+       <label for="ContactName">CompanyName:</label>
+     <input formControlName="company_name" type="text" maxlength="200" class="form-control>
+     </div>
+     <div class="form-group">
+       <label for="First Name">First Name:</label>
+     <input formControlName="first_name" type="text" maxlength="100">
+     </div>
+     <div class="form-group">
+       <label for="LastName">Last Name:</label>
+       <input formControlName="last_name" type="text" maxlength="100">
+     </div>
+     <div class="form-group">
+       <label for="email">Email:</label>
+     <input formControlName="email" type="email" >
+     </div>
+     <div class="form-group">
+       <label for="phone">Phone:</label>
+     <input formControlName="phone" type="text" maxlength="200">
+     </div>
+     <div class="form-group">
+       <label for="Facebook">Facebook:</label>
+     <input formControlName="contact_name" type="text" maxlength="100">
+     </div>
+     <div class="form-group">
+       <label for="twitter">Twitter:</label>
+     <input formControlName="twitter" type="text" maxlength="100">
+     </div>
+     <div class="form-group">
+       <label for="Paymentterms">Payment Terms:</label>
+     <input formControlName="payment_terms" type="text" maxlength="200">
+     </div>
+     <div class="form-group">
+       <label for="CurrenyID">Curreny ID:</label>
+     <input formControlName="currency_id" type="text" maxlength="200">
+     </div>
+     <div class="form-group">
+       <label for="website">Website:</label>
+     <input formControlName="website" type="text" maxlength="200">
+     </div>
+     <div class="form-group">
+       <label for="notes">Notes:</label>
+     <input formControlName="notes" type="text">
+     </div>
+     <div class="form-group">
+       <label for="LanguageCode">LanguageCode:</label>
+     <input formControlName="language_code" type="text">
+     </div>
+    
+    
+   
+    
+   </form>
+   
+       <table class="table table-bordered" formArrayName="quantities">  
+         <tr>  
+           <th colspan="2">Add Additional Info:</th>  
+           <th width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary">Add More</button></th>  
+         </tr>  
+         <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">  
+           <td>  
+             Value:  
+             <input type="text" formControlName="value" class="form-control">  
+           </td>  
+           <td> 
+             Index :  
+             <input type="text" formControlName="value" class="form-control" pattern="^[0-9]*$">   
+              
+           </td>  
+           <td>  
+               <button (click)="removeQuantity(i)" class="btn btn-danger">Remove</button>  
+           </td>  
+         </tr>  
+       </table>  
+      
+         
+     </form>  
+         
+     <br/>  
+     <button type="button"(click)="postContactDetails()" class="btn btn-primary">Submit</button>  
+   </div>  
